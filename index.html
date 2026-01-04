@@ -6,17 +6,50 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="theme-color" content="#000000">
   <link rel="stylesheet" type="text/css" href="./css/style.css" />
-  <script type="text/javascript" src="./js/script.js"></script>
-  <title>練習サイト</title>
+  <script type="text/javascript" src="./js/script.js" defer></script>
+  <script type="text/javascript" src="./js/admin.js" defer></script>
+  <title>クイズアプリ</title>
 </head>
 
 <body>
-  <h1>クイズ</h1>
-  <h2>パンはパンでも・・・</h2>
-  <button>1</button>
-  <button>2</button>
-  <button>3</button>
-  <img src="./images/picture.jpg" alt="顔写真" width="400"/>
+  <header>
+    <h1>クイズ</h1>
+  </header>
+
+  <main>
+    <!--出題エリア-->
+    <div class="question-area">
+      <p class="description">もんだいを えらぼう！</p>
+
+      <div class="img-area">
+        <img class="bread-img" id="js-bread-img" src="./images/bread.png" alt="パンの画像" width="60" />
+        <img class="bean-img" id="js-bean-img" src="./images/bean.png" alt="豆の画像" width="60" />
+        <img class="meat-img" id="js-meat-img" src="./images/meat.png" alt="肉の画像" width="60" />
+        <img class="soup-img invisible" id="js-soup-img" src="./images/soup.png" alt="スープの画像" width="60" />
+        <img class="bag-img invisible" id="js-bag-img" src="./images/bag.png" alt="かばんの画像" width="50" />
+        <img class="heart-img invisible" id="js-heart-img" src="./images/heart.png" alt="ハートの画像" width="50" />
+      </div>
+
+      <!--問題文表示-->
+      <div class="question-display" id="js-question-display"></div>
+    </div>
+
+    <!--回答エリア-->
+    <div class="answer-area">
+      <div class="answer-btn-area">
+        <button class="answer-btn" id="js-answer-btn1">1</button>
+        <button class="answer-btn" id="js-answer-btn2">2</button>
+        <button class="answer-btn" id="js-answer-btn3">3</button>
+      </div>
+      <!--正誤判定表示-->
+      <div class="answer-display" id="js-answer-display"></div>
+      <button class="clear-btn" id="js-clear-btn">もういちど やる</button>
+    </div>
+  </main>
+  <footer>
+    <!--フッターを装飾するなら、クラス名を付ける-->
+    <!--<a id="js-footer-text-a" href="./admin.html" class="quiz-footer-text">管理者用画面</a>-->
+  </footer>
 </body>
 
 </html>
