@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="theme-color" content="#000000">
+  <link rel="stylesheet" type="text/css" href="./css/style.css" />
+  <!-- ↓ 管理者用画面側にも、script.jsを読み込む必要ある？逆に、ないものを探しに行ってしまっているような？-->
+  <script type="text/javascript" src="./js/script.js" defer></script>
+  <script type="text/javascript" src="./js/admin.js" defer></script>
+  <title>クイズアプリ 管理者用画面</title>
+</head>
+
+<body>
+  <header>
+    <h1>管理者用画面</h1>
+  </header>
+
+  <main>
+    <div>
+      <input type="checkbox" class="check-btn" id="js-checkbox-bread" name="bread" checked>
+      <label for="bread">パン</label>
+    </div>
+    <div>
+      <input type="checkbox" class="check-btn" id="js-checkbox-bean" name="bean" checked>
+      <label for="bean">豆</label>
+    </div>
+    <div>
+      <input type="checkbox" class="check-btn" id="js-checkbox-meat" name="meat" checked>
+      <label for="meat">肉</label>
+    </div>
+    <div>
+      <input type="checkbox" class="check-btn" id="js-checkbox-soup" name="soup">
+      <label for="soup">スープ</label>
+    </div>
+    <div>
+      <input type="checkbox" class="check-btn" id="js-checkbox-bag" name="bag">
+      <label for="bag">かばん</label>
+    </div>
+    <div>
+      <input type="checkbox" class="check-btn" id="js-checkbox-heart" name="heart">
+      <label for="heart">ハート</label>
+    </div>
+
+    <!--チェックボックスが選ばれている情報を保持して？画面遷移　お菓子ショップ見てみる-->
+    <a id="js-to-mainpage-a" href="./index.html"><button class="add-btn" id="js-add-btn">更新</button></a>
+    <!-- <button class="add-btn" id="js-add-btn">更新</button> -->  <!--開発用　遷移しないボタン-->
+  </main>
+
+</body>
+
+</html>
