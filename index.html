@@ -7,9 +7,7 @@
   <meta name="theme-color" content="#000000">
   <link rel="stylesheet" type="text/css" href="./css/style.css" />
   <script type="text/javascript" src="./js/script.js" defer></script>
-  <!--　↓ 更新ボタンと、toggleを効かせるために必要な気がする-->
-  <script type="text/javascript" src="./js/admin.js" defer></script> 
-  <title>クイズアプリ</title>
+  <title>akiのクイズアプリ</title>
 </head>
 
 <body>
@@ -21,15 +19,7 @@
     <!--出題エリア-->
     <div class="question-area">
       <p class="description">もんだいを えらぼう！</p>
-
-      <div class="img-area">
-        <img class="questionimg bread-img" id="js-bread-img" data-quiz-id="0" src="./images/bread.png" alt="パンの画像" width="60" />
-        <img class="questionimg bean-img" id="js-bean-img" data-quiz-id="1" src="./images/bean.png" alt="豆の画像" width="60" />
-        <img class="questionimg meat-img" id="js-meat-img" data-quiz-id="2" src="./images/meat.png" alt="肉の画像" width="60" />
-        <img class="questionimg soup-img invisible" id="js-soup-img" data-quiz-id="3" src="./images/soup.png" alt="スープの画像" width="60" />
-        <img class="questionimg bag-img invisible" id="js-bag-img" data-quiz-id="4" src="./images/bag.png" alt="かばんの画像" width="50" />
-        <img class="questionimg heart-img invisible" id="js-heart-img" data-quiz-id="5" src="./images/heart.png" alt="ハートの画像" width="50" />
-      </div>
+      <div class="img-area" id="js-quizs-container"></div>
 
       <!--問題文表示-->
       <div class="question-display" id="js-question-display"></div>
@@ -49,12 +39,7 @@
   </main>
 
   <footer>
-    <!--管理者用画面が動作しなかったら、非表示にする-->
-    <!-- <a  class="quiz-footer-text" id="js-footer-text-a" href="./admin.html">管理者用画面</a> -->
-
-    <!--中の人だけにする-->
     <a class="footer-info" id="js-footer-info-a" href="./info.html">中の人</a>
   </footer>
 </body>
-
 </html>
