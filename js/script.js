@@ -5,46 +5,60 @@
 //クイズオブジェクト管理
 const quizObjects = [
   {
-    text: "パンはパンでも、たべられないパンは？<br>1:あんぱん　2:しょくぱん　3:フライパン",
+    text: "パンはパンでも、たべられないパンは？<br>1: あんぱん　2: しょくぱん　3: フライパン",
     correctAnswer: 3,
     image: "images/bread.png",
     quizId: "0",
     visible: true,
   },
   {
-    text: "まめは まめでも、そらとぶ まめは？<br>1:えだまめ　2:そらまめ　3:だいず",
+    text: "まめは まめでも、そらとぶ まめは？<br>1: えだまめ　2: そらまめ　3: だいず",
     correctAnswer: 2,
     image: "images/bean.png",
     quizId: "1",
-    visible: true,
+    visible: false,
   },
   {
-    text: "にくは にくでも、やさいの にくは？<br>1:にんにく　2:とりにく　3:ぶたにく",
+    text: "にくは にくでも、やさいの にくは？<br>1: にんにく　2: とりにく　3: ぶたにく",
     correctAnswer: 1,
     image: "images/meat.png",
     quizId: "2",
-    visible: true,
+    visible: false,
   },
   {
-    text: "スープのなかにいる いきものは？<br>1:かめ　2:さかな　3:さめ",
+    text: "スープの なかにいる いきものは？<br>1: かめ　2: さかな　3: さめ",
     correctAnswer: 1,
     image: "images/soup.png",
     quizId: "3",
     visible: false,
   },
   {
-    text: "かばんのなかにいる いきものは？<br>1:あり　2:ひよこ　3:かば",
+    text: "かばんの なかにいる いきものは？<br>1: あり　2: ひよこ　3: かば",
     correctAnswer: 3,
     image: "images/bag.png",
     quizId: "4",
     visible: false,
   },
   {
-    text: "やさしいの なかに はいっているものは？<br>1:やぎ　2:やさい　3:やきそば",
+    text: "やさしいの なかに はいっているものは？<br>1: やぎ　2: やさい　3: やきそば",
     correctAnswer: 2,
     image: "images/heart.png",
     quizId: "5",
     visible: false,
+  },
+  {
+    text: "なつに おすすめの たべものは？<br>1: すいか　2: ドーナツ　3: アイス",
+    correctAnswer: 2,
+    image: "images/summer.png",
+    quizId: "6",
+    visible: true,
+  },
+  {
+    text: "たまを 5こ あつめると でてくる たべものは？<br>1: いくら　2: ボール　3: たまご",
+    correctAnswer: 3,
+    image: "images/ball.png",
+    quizId: "7",
+    visible: true,
   },
 ];
 
@@ -94,6 +108,7 @@ function judgeQ(event) {
   if (questionDisplay.textContent === "") {
     questionDisplay.textContent = "まず、すきな えを えらんでね！";
     answerDisplay.textContent = "×";
+    answerDisplay.style.color = "red";
     const sound = new Audio('./sounds/incorrect.mp3'); 
     sound.play();
     questionDisplay.style.backgroundColor = "yellow"; 
@@ -103,10 +118,12 @@ function judgeQ(event) {
   currentAnswerBtn = Number(this.dataset.btnId);  
   if (currentQuestion.correctAnswer === currentAnswerBtn) {
     answerDisplay.textContent = "〇";
+    answerDisplay.style.color = "green";
     const sound = new Audio('./sounds/correct.mp3');
     sound.play();
   } else {
     answerDisplay.textContent = "×";
+    answerDisplay.style.color = "red";
     const sound = new Audio('./sounds/incorrect.mp3');
     sound.play();
   }
