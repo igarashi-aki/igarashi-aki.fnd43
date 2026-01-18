@@ -12,7 +12,7 @@ const checkboxs = document.getElementsByClassName("check-btn");
 
 //初期設定
 if (!localStorage.getItem("dochiraka")) {
-  const checkedDeta = {"0": true, "2": true, "3": true, "4": false, "5": false, "6": false};
+  const checkedDeta = {"0": true, "1": true, "2": true, "3": false, "4": false, "5": false};
   localStorage.setItem("dochiraka", JSON.stringify(checkedDeta));
 }
 
