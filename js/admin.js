@@ -4,8 +4,6 @@ const checkboxBread = document.querySelector("#js-checkbox-bread");
 const checkboxBean = document.querySelector("#js-checkbox-bean");
 const checkboxMeat = document.querySelector("#js-checkbox-meat");
 const checkboxSoup = document.querySelector("#js-checkbox-soup");
-// const checkboxBag = document.querySelector("#js-checkbox-bag");
-// const checkboxHeart = document.querySelector("#js-checkbox-heart");
 const checkboxSummer = document.querySelector("#js-checkbox-summer");
 const checkboxBall = document.querySelector("#js-checkbox-ball");
 
