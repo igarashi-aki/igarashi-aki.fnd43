@@ -46,35 +46,13 @@ const quizObjects = [
 const quizsContainer = document.getElementById("js-quizs-container");
 
 //初期設定
-// if (!localStorage.getItem("dochiraka")) {
-//   const checkedDeta = { "0": true, "1": true, "2": true, "3": false, "4": false, "5": false };
-//   localStorage.setItem("dochiraka", JSON.stringify(checkedDeta));
-
-//   for (let i = 0; i < 3; i++) {
-//     const createImg = document.createElement("img");
-//     createImg.src = quizObjects[i].image;
-//     createImg.className = "questionimg";
-//     createImg.dataset.quizId = quizObjects[i].quizId;
-//     quizsContainer.appendChild(createImg);
-//   }
-
-//   for (let i = 3; i < 6; i++) {
-//     const createImg = document.createElement("img");
-//     createImg.src = quizObjects[i].image;
-//     createImg.className = "questionimg";
-//     createImg.dataset.quizId = quizObjects[i].quizId;
-//     // quizsContainer.appendChild(createImg);
-//   }
-// }
-
-//初期設定
-if (!localStorage.getItem("dochiraka")) {
+if (!localStorage.getItem("checkedStatus")) {
   const checkedDeta = { "0": true, "1": true, "2": true, "3": false, "4": false, "5": false };
-  localStorage.setItem("dochiraka", JSON.stringify(checkedDeta));
+  localStorage.setItem("checkedStatus", JSON.stringify(checkedDeta));
 } 
 
 //img要素を追加
-const myObject = JSON.parse(localStorage.getItem("dochiraka"));
+const myObject = JSON.parse(localStorage.getItem("checkedStatus"));
 
 for (let i = 0; i < quizObjects.length; i++) {
   if (myObject[String(i)] === true) {

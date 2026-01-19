@@ -10,14 +10,8 @@ const checkboxBall = document.querySelector("#js-checkbox-ball");
 //配列っぽくリスト状にチェックボックス6個取得
 const checkboxs = document.getElementsByClassName("check-btn");
 
-//初期設定
-if (!localStorage.getItem("dochiraka")) {
-  const checkedDeta = {"0": true, "1": true, "2": true, "3": false, "4": false, "5": false};
-  localStorage.setItem("dochiraka", JSON.stringify(checkedDeta));
-}
-
 //ローカルストレージのデータを取り出して、チェックボックスへ反映
-const reloadDateObject = JSON.parse(localStorage.getItem("dochiraka")); //オブジェクト
+const reloadDateObject = JSON.parse(localStorage.getItem("checkedStatus")); //オブジェクト
 for (let i = 0; i < checkboxs.length; i++) {
   checkboxs[i].checked = reloadDateObject[String(i)];
 }
@@ -33,7 +27,7 @@ function addQuiz(e) {
     checkedDeta[i] = checkboxs[i].checked;
   }
 
-  localStorage.setItem("dochiraka", JSON.stringify(checkedDeta));
+  localStorage.setItem("checkedStatus", JSON.stringify(checkedDeta));
 }
 
 // 更新ボタンクリック時のイベントリスナー
