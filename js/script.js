@@ -42,30 +42,44 @@ const quizObjects = [
   },
 ];
 
+//初期設定
+if (!localStorage.getItem("dochiraka")) {
+  const checkedDeta = { "0": true, "1": true, "2": true, "3": false, "4": false, "5": false };
+  localStorage.setItem("dochiraka", JSON.stringify(checkedDeta));
+
+  for (let i = 0; i < quizObjects.length; i++) { 
+      const createImg = document.createElement("img");
+      createImg.src = quizObjects[i].image;
+      createImg.className = "questionimg";
+      createImg.dataset.quizId = quizObjects[i].quizId;
+      quizsContainer.appendChild(createImg);
+  }
+}
+
 //img要素を表示する場所を取得
 const quizsContainer = document.getElementById("js-quizs-container");
 
 //img要素を追加
-const myObject = JSON.parse(localStorage.getItem("dochiraka")); 
+const myObject = JSON.parse(localStorage.getItem("dochiraka"));
 
 for (let i = 0; i < quizObjects.length; i++) {
-  if (myObject[String(i)]  === true) {
-  const createImg = document.createElement("img");
-  createImg.src = quizObjects[i].image;  
-  createImg.className = "questionimg";
-  createImg.dataset.quizId = quizObjects[i].quizId;
-  quizsContainer.appendChild(createImg);
+  if (myObject[String(i)] === true) {
+    const createImg = document.createElement("img");
+    createImg.src = quizObjects[i].image;
+    createImg.className = "questionimg";
+    createImg.dataset.quizId = quizObjects[i].quizId;
+    quizsContainer.appendChild(createImg);
   }
 }
 
 //問題文を表示する場所を取得
-const questionDisplay = document.getElementById("js-question-display"); 
+const questionDisplay = document.getElementById("js-question-display");
 
 //今解いているクイズオブジェクトを変数に入れる用　あとで判定に使う
 let currentQuestion = {}; //初期化
 
 //問題文を表示させる関数
-function makeQuestion(event) {  
+function makeQuestion(event) {
   clearQuestionAndAnswer();
   currentQuestion = quizObjects[Number(this.dataset.quizId)];
   questionDisplay.innerHTML = currentQuestion.text;
@@ -73,7 +87,7 @@ function makeQuestion(event) {
 
 //画像クリック時のイベントリスナー
 document.querySelectorAll("img.questionimg").forEach((element) => {
-  element.addEventListener("click", makeQuestion);  
+  element.addEventListener("click", makeQuestion);
 });
 
 //回答エリア＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
@@ -81,7 +95,7 @@ document.querySelectorAll("img.questionimg").forEach((element) => {
 const answerDisplay = document.getElementById("js-answer-display");
 
 //選択された回答番号を格納する変数の初期化
-let currentAnswerBtn; 
+let currentAnswerBtn;
 
 //正誤判定関数
 function judgeQ(event) {
@@ -90,13 +104,13 @@ function judgeQ(event) {
     questionDisplay.textContent = "まず、すきな えを えらんでね！";
     answerDisplay.textContent = "×";
     answerDisplay.style.color = "red";
-    const sound = new Audio('./sounds/incorrect.mp3'); 
+    const sound = new Audio('./sounds/incorrect.mp3');
     sound.play();
-    questionDisplay.style.backgroundColor = "yellow"; 
+    questionDisplay.style.backgroundColor = "yellow";
     return;
   }
 
-  currentAnswerBtn = Number(this.dataset.btnId);  
+  currentAnswerBtn = Number(this.dataset.btnId);
   if (currentQuestion.correctAnswer === currentAnswerBtn) {
     answerDisplay.textContent = "〇";
     answerDisplay.style.color = "green";
@@ -112,7 +126,7 @@ function judgeQ(event) {
 
 //回答ボタンクリック時のイベントリスナー
 document.querySelectorAll(".answer-btn").forEach((btn) => {
-  btn.addEventListener("click", judgeQ);  
+  btn.addEventListener("click", judgeQ);
 });
 
 //クリアーボタン要素を取得
