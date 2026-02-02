@@ -82,6 +82,12 @@ document.querySelectorAll("img.questionimg").forEach((element) => {
   element.addEventListener("click", makeQuestion);
 });
 
+//ヒントを表示
+const hintBtn = document.getElementById("js-hint-btn");
+const hintAlert = () => alert("スープは、わかめスープです。");
+hintBtn.addEventListener("click", hintAlert);
+
+
 //回答エリア＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
 //判定結果を表示する場所を取得
 const answerDisplay = document.getElementById("js-answer-display");

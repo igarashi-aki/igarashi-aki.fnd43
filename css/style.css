@@ -48,6 +48,10 @@ button {
   height: 50px;
 }
 
+.hint-btn {
+  height: 24px;
+}
+
 .answer-btn {
   width: 80px;
   font-size: 28px;
