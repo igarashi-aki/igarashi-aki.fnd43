@@ -1,49 +1,59 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="theme-color" content="#000000" />
+    <link rel="stylesheet" type="text/css" href="./css/style.css" />
+    <script type="text/javascript" src="./js/script.js" defer></script>
+    <title>Akiのクイズアプリ</title>
+  </head>
 
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="theme-color" content="#000000">
-  <link rel="stylesheet" type="text/css" href="./css/style.css" />
-  <script type="text/javascript" src="./js/script.js" defer></script>
-  <title>Akiのクイズアプリ</title>
-</head>
+  <body>
+    <header>
+      <h1>クイズで あそぼう</h1>
+    </header>
 
-<body>
-  <header>
-    <h1>クイズで あそぼう</h1>
-  </header>
+    <main>
+      <!--出題エリア-->
+      <div class="question-area">
+        <p class="description">すきな えを クリックしてね！</p>
+        <div class="img-area" id="js-quizs-container"></div>
 
-  <main>
-    <!--出題エリア-->
-    <div class="question-area">
-      <p class="description">すきな えを クリックしてね！</p>
-      <div class="img-area" id="js-quizs-container"></div>
+        <!--問題文表示-->
+        <div class="question-display" id="js-question-display"></div>
 
-      <!--問題文表示-->
-      <div class="question-display" id="js-question-display"></div>
-
-      <!--ヒント表示-->
-      <button class="hint-btn" id="js-hint-btn">ヒント</button>
-    </div>
-
-    <!--回答エリア-->
-    <div class="answer-area">
-      <div class="answer-btn-area">
-        <button class="answer-btn" id="js-answer-btn1" data-btn-id="1">1</button>
-        <button class="answer-btn" id="js-answer-btn2" data-btn-id="2">2</button>
-        <button class="answer-btn" id="js-answer-btn3" data-btn-id="3">3</button>
+        <!--ヒント表示-->
+        <button class="hint-btn" id="js-hint-btn">ヒント</button>
       </div>
-      <!--正誤判定表示-->
-      <div class="answer-display" id="js-answer-display"></div>
-      <button class="clear-btn" id="js-clear-btn">もういちど やる</button>
-    </div>
-  </main>
 
-  <footer>
-    <a  class="quiz-footer-text" id="js-footer-text-a" href="./admin.html">管理者用画面</a>
-    <a class="footer-info" id="js-footer-info-a" href="./info.html">中の人</a>
-  </footer>
-</body>
+      <!--回答エリア-->
+      <div class="answer-area">
+        <div class="answer-btn-area">
+          <button class="answer-btn" id="js-answer-btn1" data-btn-id="1">
+            1
+          </button>
+          <button class="answer-btn" id="js-answer-btn2" data-btn-id="2">
+            2
+          </button>
+          <button class="answer-btn" id="js-answer-btn3" data-btn-id="3">
+            3
+          </button>
+        </div>
+        <!--正誤判定表示-->
+        <div class="answer-display" id="js-answer-display"></div>
+        <button class="clear-btn" id="js-clear-btn">もういちど やる</button>
+      </div>
+    </main>
+
+    <footer>
+      <a class="quiz-footer-text" id="js-footer-text-a" href="./admin.html"
+        >管理者用画面</a
+      >
+      <!-- <a class="footer-info" id="js-footer-info-a" href="./info.html">中の人</a> -->
+    </footer>
+  </body>
 </html>
