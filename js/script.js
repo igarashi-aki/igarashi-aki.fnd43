@@ -1,11 +1,11 @@
-'use strict'
+"use strict";
 // 厳格モード
 
 //出題エリア＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
 //クイズオブジェクト管理
 const quizObjects = [
   {
-    text: "パンはパンでも、たべられないパンは？<br>1: あんぱん　2: しょくぱん　3: フライパン",
+    text: "パンはパンでも、はなしを きいてくれる パンは？<br>1: あんぱん　2: しょくぱん　3: カレーパン",
     correctAnswer: 3,
     image: "images/bread.png",
     quizId: "0",
@@ -47,9 +47,16 @@ const quizsContainer = document.getElementById("js-quizs-container");
 
 //初期設定
 if (!localStorage.getItem("checkedStatus")) {
-  const checkedDeta = { "0": true, "1": true, "2": true, "3": false, "4": false, "5": false };
+  const checkedDeta = {
+    0: true,
+    1: true,
+    2: true,
+    3: false,
+    4: false,
+    5: false,
+  };
   localStorage.setItem("checkedStatus", JSON.stringify(checkedDeta));
-} 
+}
 
 //img要素を追加
 const myObject = JSON.parse(localStorage.getItem("checkedStatus"));
@@ -87,7 +94,6 @@ const hintBtn = document.getElementById("js-hint-btn");
 const hintAlert = () => alert("スープは、わかめスープです。");
 hintBtn.addEventListener("click", hintAlert);
 
-
 //回答エリア＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
 //判定結果を表示する場所を取得
 const answerDisplay = document.getElementById("js-answer-display");
@@ -102,7 +108,7 @@ function judgeQ(event) {
     questionDisplay.textContent = "まず、すきな えを えらんでね！";
     answerDisplay.textContent = "×";
     answerDisplay.style.color = "red";
-    const sound = new Audio('./sounds/incorrect.mp3');
+    const sound = new Audio("./sounds/incorrect.mp3");
     sound.play();
     questionDisplay.style.backgroundColor = "yellow";
     return;
@@ -112,12 +118,12 @@ function judgeQ(event) {
   if (currentQuestion.correctAnswer === currentAnswerBtn) {
     answerDisplay.textContent = "〇";
     answerDisplay.style.color = "green";
-    const sound = new Audio('./sounds/correct.mp3');
+    const sound = new Audio("./sounds/correct.mp3");
     sound.play();
   } else {
     answerDisplay.textContent = "×";
     answerDisplay.style.color = "red";
-    const sound = new Audio('./sounds/incorrect.mp3');
+    const sound = new Audio("./sounds/incorrect.mp3");
     sound.play();
   }
 }
@@ -141,4 +147,3 @@ function clearQuestionAndAnswer() {
 
 //クリアーボタンクリック時のイベントリスナー
 clearBtn.addEventListener("click", clearQuestionAndAnswer);
-
