@@ -6,8 +6,8 @@
 const quizObjects = [
   {
     text: "パンはパンでも、はなしを きいてくれる パンは？<br>1: あんぱん　2: しょくぱん　3: カレーパン",
-    correctAnswer: 3,
-    image: "images/bread.png",
+    correctAnswer: 2,
+    image: "images/croissant.png",
     quizId: "0",
   },
   {
