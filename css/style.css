@@ -3,9 +3,9 @@ body {
   width: 360px;
   margin: auto;
   background-image: url(../images/background.jpg);
-  height: 100vh;  
-  background-size:  cover;  
-  font-family: sans-serif;    
+  height: 100vh;
+  background-size: cover;
+  font-family: sans-serif;
 }
 
 h1 {
@@ -35,7 +35,18 @@ h1 {
 }
 
 .answer-area {
+  margin-top: 40px;
+  font-size: 20px;
   text-align: center;
+}
+.answer-choices-area {
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.answer-choice {
+  margin-right: 20px;
 }
 
 .answer-display {

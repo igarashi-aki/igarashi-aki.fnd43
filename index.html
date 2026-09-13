@@ -25,14 +25,16 @@
 
         <!--問題文表示-->
         <div class="question-display" id="js-question-display"></div>
-
-        <!--ヒント表示-->
-        <button class="hint-btn" id="js-hint-btn">ヒント</button>
       </div>
 
       <!--回答エリア-->
       <div class="answer-area">
-        <div class="answer-btn-area">
+        <div class="answer-choices-area">
+          <div class="answer-choice" id="js-choice-display1"></div>
+          <div class="answer-choice" id="js-choice-display2"></div>
+          <div class="answer-choice" id="js-choice-display3"></div>
+        </div>
+        <!-- <div class="answer-btn-area">
           <button class="answer-btn" id="js-answer-btn1" data-btn-id="1">
             1
           </button>
@@ -42,7 +44,7 @@
           <button class="answer-btn" id="js-answer-btn3" data-btn-id="3">
             3
           </button>
-        </div>
+        </div> -->
         <!--正誤判定表示-->
         <div class="answer-display" id="js-answer-display"></div>
         <button class="clear-btn" id="js-clear-btn">もういちど やる</button>
@@ -53,7 +55,6 @@
       <a class="quiz-footer-text" id="js-footer-text-a" href="./admin.html"
         >管理者用画面</a
       >
-      <!-- <a class="footer-info" id="js-footer-info-a" href="./info.html">中の人</a> -->
     </footer>
   </body>
 </html>
