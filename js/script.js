@@ -108,8 +108,7 @@ function makeQuestion(event) {
 
 // 解答選択肢を表示させる関数
 function makeChoices(event) {
-  // クリアーする関数を作って、呼ぶ。後で。
-
+  // ここをリファクタリングするところから。何を習ったのか（可読性、保守性）を、見てもらいどころ⭐️⭐️配列かオブジェクトにする
   currentQuestion = quizObjects[Number(this.dataset.quizId)];
   choiceDisplay1.innerHTML = currentQuestion.choice1;
   choiceDisplay1.setAttribute("id", "choice1");
@@ -129,17 +128,11 @@ document.querySelectorAll("img.questionimg").forEach((element) => {
   element.addEventListener("click", makeChoices);
 });
 
-//ヒントを表示
-// const hintBtn = document.getElementById("js-hint-btn");
-// const hintAlert = () => alert("スープは、わかめスープです。");
-// hintBtn.addEventListener("click", hintAlert);
-
 //回答エリア＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
 //判定結果を表示する場所を取得
 const answerDisplay = document.getElementById("js-answer-display");
 
 //選択された回答番号を格納する変数の初期化
-// let currentAnswerBtn;
 let currentAnswerText;
 
 //正誤判定関数
@@ -147,27 +140,28 @@ function judgeQ(event) {
   //エッジケース　先に回答ボタンを押したら、注意文を表示
   if (questionDisplay.textContent === "") {
     questionDisplay.textContent = "まず、すきな えを えらんでね！";
-    answerDisplay.textContent = "×";
-    answerDisplay.style.color = "red";
-    const sound = new Audio("./sounds/incorrect.mp3");
-    sound.play();
+    incorrect();
     questionDisplay.style.backgroundColor = "yellow";
     return;
   }
 
   currentAnswerText = Number(this.dataset.choiceId);
-  if (currentQuestion.correctAnswer === currentAnswerText) {
-    answerDisplay.textContent = "〇";
-    answerDisplay.style.color = "green";
-    const sound = new Audio("./sounds/correct.mp3");
-    sound.play();
-  } else {
-    answerDisplay.textContent = "×";
-    answerDisplay.style.color = "red";
-    const sound = new Audio("./sounds/incorrect.mp3");
-    sound.play();
-  }
+  currentQuestion.correctAnswer === currentAnswerText ? correct() : incorrect();
 }
+
+const correct = () => {
+  answerDisplay.textContent = "〇";
+  answerDisplay.style.color = "green";
+  const sound = new Audio("./sounds/correct.mp3");
+  sound.play();
+};
+
+const incorrect = () => {
+  answerDisplay.textContent = "×";
+  answerDisplay.style.color = "red";
+  const sound = new Audio("./sounds/incorrect.mp3");
+  sound.play();
+};
 
 //回答ボタンクリック時のイベントリスナー
 document.querySelectorAll(".answer-choice").forEach((btn) => {
