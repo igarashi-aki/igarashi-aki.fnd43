@@ -1,66 +1,52 @@
 "use strict";
-// 厳格モード
 
 //出題エリア＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
-//クイズオブジェクト管理
 const quizObjects = [
   {
     text: "パンはパンでも、話を きいてくれる パンは？",
-    correctAnswer: 2,
-    choice1: "あんぱん",
-    choice2: "しょくぱん",
-    choice3: "カレーパン",
+    // datasetと厳密等価か比較したいので、文字列
+    correctAnswer: "1",
+    choices: ["あんぱん", "しょくぱん", "カレーパン"],
     image: "images/croissant.png",
-    quizId: "0",
+    quizId: 0,
   },
   {
     text: "まめは まめでも、そらとぶ まめは？",
-    correctAnswer: 2,
-    choice1: "えだまめ",
-    choice2: "そらまめ",
-    choice3: "だいず",
+    correctAnswer: "1",
+    choices: ["えだまめ", "そらまめ", "だいず"],
     image: "images/bean.png",
-    quizId: "1",
+    quizId: 1,
   },
   {
     text: "にくは にくでも、やさいの にくは？",
-    correctAnswer: 1,
-    choice1: "にんにく",
-    choice2: "とりにく",
-    choice3: "ぶたにく",
+    correctAnswer: "0",
+    choices: ["にんにく", "とりにく", "ぶたにく"],
     image: "images/meat.png",
-    quizId: "2",
+    quizId: 2,
   },
   {
     text: "スープの なかにいる いきものは？<br>（ ヒント・・・ わかめスープです😋 ）",
-    correctAnswer: 1,
-    choice1: "かめ",
-    choice2: "はくちょう",
-    choice3: "わに",
+    correctAnswer: "0",
+    choices: ["かめ", "はくちょう", "わに"],
     image: "images/soup.png",
-    quizId: "3",
+    quizId: 3,
   },
   {
     text: "なつに おすすめの たべものは？",
-    correctAnswer: 2,
-    choice1: "すいか",
-    choice2: "ドーナツ",
-    choice3: "アイス",
+    correctAnswer: "1",
+    choices: ["すいか", "ドーナツ", "アイス"],
     image: "images/summer.png",
-    quizId: "4",
+    quizId: 4,
   },
   {
     text: "たまを 5こ あつめた たべものは？",
-    correctAnswer: 3,
-    choice1: "いくら",
-    choice2: "ボール",
-    choice3: "たまご",
+    correctAnswer: "2",
+    choices: ["いくら", "ボール", "たまご"],
     image: "images/ball.png",
-    quizId: "5",
+    quizId: 5,
   },
 ];
 
-//img要素を表示する場所を取得
 const quizsContainer = document.getElementById("js-quizs-container");
 
 //初期設定
@@ -76,11 +62,10 @@ if (!localStorage.getItem("checkedStatus")) {
   localStorage.setItem("checkedStatus", JSON.stringify(checkedDeta));
 }
 
-//img要素を追加
-const myObject = JSON.parse(localStorage.getItem("checkedStatus"));
-
+//設定内容にて画像をブラウザへ表示
+const checkedStatu = JSON.parse(localStorage.getItem("checkedStatus"));
 for (let i = 0; i < quizObjects.length; i++) {
-  if (myObject[String(i)] === true) {
+  if (checkedStatu[String(i)] === true) {
     const createImg = document.createElement("img");
     createImg.src = quizObjects[i].image;
     createImg.className = "questionimg";
@@ -95,33 +80,26 @@ const questionDisplay = document.getElementById("js-question-display");
 const choiceDisplay1 = document.getElementById("js-choice-display1");
 const choiceDisplay2 = document.getElementById("js-choice-display2");
 const choiceDisplay3 = document.getElementById("js-choice-display3");
+const choiceDisplays = [choiceDisplay1, choiceDisplay2, choiceDisplay3];
 
-//今解いているクイズオブジェクトを変数に入れる用　あとで判定に使う
-let currentQuestion = {}; //初期化
+let currentQuestion = {};
 
 //問題文を表示させる関数
 function makeQuestion(event) {
   clearQuestionAndAnswer();
-  currentQuestion = quizObjects[Number(this.dataset.quizId)];
+  currentQuestion = quizObjects[this.dataset.quizId];
   questionDisplay.innerHTML = currentQuestion.text;
 }
 
 // 解答選択肢を表示させる関数
 function makeChoices(event) {
-  // ここをリファクタリングするところから。何を習ったのか（可読性、保守性）を、見てもらいどころ⭐️⭐️配列かオブジェクトにする
-  currentQuestion = quizObjects[Number(this.dataset.quizId)];
-  choiceDisplay1.innerHTML = currentQuestion.choice1;
-  choiceDisplay1.setAttribute("id", "choice1");
-  choiceDisplay1.dataset.choiceId = "1";
-
-  choiceDisplay2.innerHTML = currentQuestion.choice2;
-  choiceDisplay2.setAttribute("id", "choice2");
-  choiceDisplay2.dataset.choiceId = "2";
-
-  choiceDisplay3.innerHTML = currentQuestion.choice3;
-  choiceDisplay3.setAttribute("id", "choice3");
-  choiceDisplay3.dataset.choiceId = "3";
+  currentQuestion = quizObjects[this.dataset.quizId];
+  currentQuestion.choices.forEach((element, n) => {
+    choiceDisplays[n].innerHTML = element;
+    choiceDisplays[n].dataset.choiceId = n;
+  });
 }
+
 //画像クリック時のイベントリスナー
 document.querySelectorAll("img.questionimg").forEach((element) => {
   element.addEventListener("click", makeQuestion);
@@ -145,7 +123,7 @@ function judgeQ(event) {
     return;
   }
 
-  currentAnswerText = Number(this.dataset.choiceId);
+  currentAnswerText = this.dataset.choiceId;
   currentQuestion.correctAnswer === currentAnswerText ? correct() : incorrect();
 }
 
@@ -171,10 +149,10 @@ document.querySelectorAll(".answer-choice").forEach((btn) => {
 //クリアーボタン要素を取得
 const clearBtn = document.getElementById("js-clear-btn");
 
-//回答ディスプレイをクリアーする関数
+//回答ディスプレイをクリアする関数
 function clearQuestionAndAnswer() {
-  currentQuestion = "";
-  currentAnswerText = "";
+  currentQuestion = null;
+  currentAnswerText = null;
   questionDisplay.textContent = "";
   questionDisplay.style.backgroundColor = "white";
   choiceDisplay1.innerHTML = "";
