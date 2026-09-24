@@ -111,20 +111,12 @@ document.querySelectorAll("img.questionimg").forEach((element) => {
 const answerDisplay = document.getElementById("js-answer-display");
 
 //選択された回答番号を格納する変数の初期化
-let currentAnswerText;
+let currentAnswer;
 
 //正誤判定関数
 function judgeQ(event) {
-  //エッジケース　先に回答ボタンを押したら、注意文を表示
-  if (questionDisplay.textContent === "") {
-    questionDisplay.textContent = "まず、すきな えを えらんでね！";
-    incorrect();
-    questionDisplay.style.backgroundColor = "yellow";
-    return;
-  }
-
-  currentAnswerText = this.dataset.choiceId;
-  currentQuestion.correctAnswer === currentAnswerText ? correct() : incorrect();
+  currentAnswer = this.dataset.choiceId;
+  currentQuestion.correctAnswer === currentAnswer ? correct() : incorrect();
 }
 
 const correct = () => {
@@ -152,12 +144,10 @@ const clearBtn = document.getElementById("js-clear-btn");
 //回答ディスプレイをクリアする関数
 function clearQuestionAndAnswer() {
   currentQuestion = null;
-  currentAnswerText = null;
+  currentAnswer = null;
   questionDisplay.textContent = "";
   questionDisplay.style.backgroundColor = "white";
-  choiceDisplay1.innerHTML = "";
-  choiceDisplay2.innerHTML = "";
-  choiceDisplay3.innerHTML = "";
+  choiceDisplays.forEach((el) => (el.innerHTML = ""));
   answerDisplay.textContent = "";
 }
 
